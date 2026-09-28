@@ -11,7 +11,7 @@ export const contentType = "image/png";
 // opengraph-image).
 export default async function Image() {
   return new ImageResponse(
-    await renderPaintingCard("raphael-school-of-athens"),
+    await renderPaintingCard("botticelli-birth-of-venus"),
     size
   );
 }

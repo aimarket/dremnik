@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 · 2026.09.28
+
+- Use Botticelli's *The Birth of Venus* for the home page OG card, matching the X banner.
+
 ## 0.2.0 · 2026.09.28
 
 - Render each post's OG card as a Renaissance painting, chosen per post with a `painting` frontmatter field; the title travels in the metadata.

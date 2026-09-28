@@ -62,6 +62,14 @@ export const PAINTINGS = {
     height: 1241,
     focus: [0.5, 0.52],
   },
+  "botticelli-birth-of-venus": {
+    artist: "Sandro Botticelli",
+    title: "The Birth of Venus",
+    year: "c. 1485",
+    width: 1600,
+    height: 1005,
+    focus: [0.5, 0.45],
+  },
 } satisfies Record<string, Painting>;
 
 export type PaintingId = keyof typeof PAINTINGS;
