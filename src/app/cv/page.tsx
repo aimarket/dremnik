@@ -3,7 +3,7 @@ import { Header } from "@/components/header";
 import { WorkExperience } from "./experience";
 
 export const metadata: Metadata = {
-  title: "CV · Andrew Jones",
+  title: "CV",
   description: "Résumé — independent work, experience, and side projects.",
 };
 

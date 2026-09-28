@@ -3,8 +3,8 @@ title: "A world of uncertainty"
 date: "2026-07-14"
 slug: "a-world-of-uncertainty"
 description: "I traded control-by-planning for a Bayesian, optionality-first way of working. Ramblings on letting go in a world that won't hold still."
-ogImage: "/favicon.ico"
 published: true
+painting: "giorgione-the-tempest"
 ---
 
 I wanted to share some ramblings about some of my experiences lately.

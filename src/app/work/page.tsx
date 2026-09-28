@@ -3,7 +3,7 @@ import { Header } from "@/components/header";
 import WorkIndex from "./work-index";
 
 export const metadata: Metadata = {
-  title: "Portfolio · Andrew Jones",
+  title: "Portfolio",
   description: "Selected product and design work.",
 };
 

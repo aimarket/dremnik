@@ -26,6 +26,7 @@
     --font-edict: var(--font-edict);
     --font-financier-display: var(--font-financier-display);
     --font-spezia: var(--font-spezia);
+    --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
 
     --content-width: 696px;
 }

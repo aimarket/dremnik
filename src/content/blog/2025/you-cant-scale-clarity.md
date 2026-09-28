@@ -4,7 +4,6 @@ date: "2025-12-27"
 slug: "you-cant-scale-clarity"
 description: "you can't scale clarity"
 published: false
-ogImage: "/blog/design-is-the-new-bottleneck/amdahls-law-speedup.png"
 path: dremnik/landing/src/content/blog/2025/you-cant-scale-clarity.md
 outline: |
         · amdahl’s law                       L27
@@ -17,6 +16,7 @@ outline: |
         · n+1 means more than ever.         L100
         · general > specialized.            L122
         · closing thoughts                  L128
+painting: "bruegel-tower-of-babel"
 ---
 
 i've been thinking a lot about what it means to build software now that AI can write code better than most people. there's a few memes going around to the tune of "i can't wait for 50x agency" or "imagine thousands of agents working on your behalf". and yet my intuition just can't seem to agree with these stories floating around on twitter.

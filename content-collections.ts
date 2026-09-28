@@ -18,7 +18,7 @@ const posts = defineCollection({
     date: z.string(), // We'll parse this as date for sorting
     slug: z.string(),
     description: z.string().optional(),
-    ogImage: z.string().optional(), // legacy; OG images now come from opengraph-image.tsx
+    painting: z.string().optional(), // OG card painting id (src/lib/paintings.ts)
     hero: z.string().optional(),
     heroAlt: z.string().optional(),
     published: z.boolean().default(true),

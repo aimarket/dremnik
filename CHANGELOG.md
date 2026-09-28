@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 · 2026.09.28
+
+- Render each post's OG card as a Renaissance painting, chosen per post with a `painting` frontmatter field; the title travels in the metadata.
+- Return to the previous page from a post's back link instead of always going to the blog index.
+- Title browser tabs "ANDREW JONES", with "Page — ANDREW JONES" on inner pages.
+- Set blog dates in the system font, slightly larger on the article page.
+
 ## 0.1.4 · 2026.09.07
 
 - Remove the aside about email being the tersest medium.

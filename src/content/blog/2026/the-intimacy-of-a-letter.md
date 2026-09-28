@@ -4,6 +4,7 @@ date: "2026-09-06"
 slug: "the-intimacy-of-a-letter"
 description: "analog reflections on the pace of our relationships"
 published: true
+painting: "carpaccio-vision-of-st-augustine"
 ---
 
 I have lately been fascinated by the idea of letters.

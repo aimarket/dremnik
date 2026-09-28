@@ -3,11 +3,11 @@ title: "Designing an autonomous company"
 date: "2026-03-08"
 slug: "designing-an-autonomous-company"
 description: "Every piece of company state lives in a folder. Markdown files and shell scripts. The filesystem is the API."
-ogImage: "/favicon.ico"
 published: false
+painting: "antonello-st-jerome-in-his-study"
 ---
 
-Context graphs are the hot thing at the moment. Everyone is trying to figure out how to give agents a view of the full state of a business, so they can run off and be autonomous little workers.
+Context graphs are the hot thing at the moment. Everyone is trying to figure out how to give agents a view of the full state of a business, so they can run off and be autonomous workers.
 
 Despite some of my anti-consensus tendencies, I couldn't help myself from jumping on the bandwagon. So I started by asking myself the question:
 
@@ -108,13 +108,14 @@ company/
 │   ├── mission.md
 │   ├── values.md
 │   └── principles.md
-├── .cycle/
-│   ├── C-09/
-│   │   ├── plan.md       # what we intend to do
-│   │   └── review.md     # what happened + conclusions
-│   ├── C-10/
-│   │   └── plan.md
-│   └── ...
+├── .plan/
+│   └── cycle/
+│       ├── C-09/
+│       │   ├── plan.md   # what we intend to do
+│       │   └── review.md # what happened + conclusions
+│       ├── C-10/
+│       │   └── plan.md
+│       └── ...
 ├── .inbox/               # unprocessed inputs — triage weekly
 ├── .tasks/
 │   └── TODO.md           # stack (active) + heap (deferred)
@@ -155,8 +156,8 @@ Those procedures live in `SOP/`. They are step-by-step: how to run a cycle revie
 
 The rest of the system holds the other aspects of the world model that any company needs to define its internal state and its understanding of the external world at a given moment — and, being good data scientists, point-in-time understanding too, so we can see how it evolved and learn from the meta-learning.
 
-`.self/` is the constitution — it changes rarely and constrains everything downstream. `worldview/` holds current beliefs about the market, competitors, and opportunities, updated every cycle as new data comes in. `strategy/` holds positioning, competitive landscape, and the hard-won truths you operate from. `signals/` captures raw observations. `projects/` holds the actual work. `.cycle/` holds the rhythm of planning and reflection. `.inbox/` is where raw inputs land before being routed. `.tasks/` is working memory.
+`.self/` is the constitution — it changes rarely and constrains everything downstream. `worldview/` holds current beliefs about the market, competitors, and opportunities, updated every cycle as new data comes in. `strategy/` holds positioning, competitive landscape, and the hard-won truths you operate from. `signals/` captures raw observations. `projects/` holds the actual work. `.plan/cycle/` holds the cycle plans and reviews that record the rhythm of planning and reflection. `.inbox/` is where raw inputs land before being routed. `.tasks/` is working memory.
 
 And because it is all files, it is all version-controlled. You can diff your beliefs from three months ago against today. You can grep across every cycle review you have ever written. You can trace exactly when and why you changed your mind about something.
 
-I don't think this is the final form. But the core idea is right: structure your company state so that agents can read it, write it, and run procedures against it. Start with `.self/`, `.cycle/`, and a few SOPs. The rest will grow as you need it.
+I don't think this is the final form. But the core idea is right: structure your company state so that agents can read it, write it, and run procedures against it. Start with `.self/`, `.plan/cycle/`, and a few SOPs. The rest will grow as you need it.

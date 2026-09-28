@@ -41,7 +41,7 @@ export default function Blog() {
                     <span className="text-ink text-[10.5pt] font-medium tracking-[-0.015em] group-hover:underline underline-offset-4 decoration-[1px] decoration-muted">
                       {post.title}
                     </span>
-                    <span className="font-mono text-[8.5pt] text-muted shrink-0">
+                    <span className="font-system text-[9pt] text-muted shrink-0 tabular-nums">
                       {formatBlogDate(post.date, false)}
                     </span>
                   </Link>

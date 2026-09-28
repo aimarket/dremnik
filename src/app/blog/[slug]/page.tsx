@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allPosts } from "content-collections";
 import { formatBlogDate } from "@/lib/blog-date";
 
+import { BackLink } from "@/components/back-link";
 import { Markdown } from "@/components/markdown";
 
 interface Props {
@@ -22,12 +22,12 @@ export default async function BlogPostPage({ params }: Props) {
     <>
     <div className="max-w-[var(--content-width)] mx-auto px-6 md:px-10 pt-8 pb-24">
       <div className="mb-12">
-        <Link
-          href="/blog"
+        <BackLink
+          fallback="/blog"
           className="font-mono text-[8.5pt] text-muted hover:text-ink transition-colors duration-200"
         >
           ← back
-        </Link>
+        </BackLink>
       </div>
 
       <article>
@@ -35,7 +35,7 @@ export default async function BlogPostPage({ params }: Props) {
           <h1 className="text-[22pt] md:text-[25pt] font-medium text-ink tracking-[-0.02em] leading-[1.15]">
             {post.title}
           </h1>
-          <div className="font-mono text-[9pt] text-muted">
+          <div className="font-system text-[10.5pt] text-muted tabular-nums">
             {formatBlogDate(post.date)}
           </div>
         </header>
@@ -80,7 +80,7 @@ export async function generateMetadata({ params }: Props) {
 
   // OG/Twitter images come from the dynamic opengraph-image.tsx in this route.
   return {
-    title: `${post.title} · dremnik`,
+    title: post.title,
     description: post.description ?? post.title,
     openGraph: {
       title: post.title,
