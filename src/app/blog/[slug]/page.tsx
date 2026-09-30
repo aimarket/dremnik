@@ -4,6 +4,7 @@ import { formatBlogDate } from "@/lib/blog-date";
 
 import { BackLink } from "@/components/back-link";
 import { Markdown } from "@/components/markdown";
+import { ScrollComplete } from "@/components/rpg";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -20,7 +21,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
-    <div className="max-w-[var(--content-width)] mx-auto px-6 md:px-10 pt-8 pb-24">
+    <div className="max-w-[var(--content-width)] mx-auto px-6 md:px-10 pt-8 pb-40">
       <div className="mb-12">
         <BackLink
           fallback="/blog"
@@ -32,6 +33,9 @@ export default async function BlogPostPage({ params }: Props) {
 
       <article>
         <header className="flex flex-col gap-2 pb-2">
+          <p className="font-pixel text-[8px] leading-[1.8] text-[#9fe870]">
+            QUEST LOG · SCROLL OF LORE
+          </p>
           <h1 className="text-[22pt] md:text-[25pt] font-medium text-ink tracking-[-0.02em] leading-[1.15]">
             {post.title}
           </h1>
@@ -54,6 +58,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="prose-tilde">
           <Markdown content={post.content} />
         </div>
+        <ScrollComplete />
       </article>
     </div>
     </>

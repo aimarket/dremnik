@@ -1,5 +1,21 @@
 import localFont from "next/font/local";
-import { Inter, Geist, Geist_Mono } from "next/font/google";
+import { Inter, Geist, Geist_Mono, Press_Start_2P, VT323 } from "next/font/google";
+
+// 8-bit type for Andrew Quest: Press Start 2P for labels and titles (small
+// doses only), VT323 for dialog boxes, where you actually read.
+export const pixel = Press_Start_2P({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-pixel",
+  display: "swap",
+});
+
+export const vt = VT323({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-vt",
+  display: "swap",
+});
 
 export const geist = Geist({
   subsets: ["latin"],

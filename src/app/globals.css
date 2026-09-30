@@ -27,6 +27,8 @@
     --font-financier-display: var(--font-financier-display);
     --font-spezia: var(--font-spezia);
     --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    --font-pixel: "rpg-infinity", var(--font-pixel), monospace;
+    --font-vt: "rpg-infinity", var(--font-vt), monospace;
 
     --content-width: 696px;
 }
@@ -53,6 +55,19 @@
     --card: #171719;
     --link: #B5D6FB;       /* apocrypha steel-500 */
     --code-bg: hsla(220, 8%, 18%, 0.7);
+}
+
+/* Andrew Quest, the default theme: night sky, white-bordered windows, gold. */
+.rpg {
+    --ink: #ffffff;
+    --body: #e2e4ff;
+    --soft: #b8bbef;
+    --muted: #9296d8;
+    --rule: #2e3380;
+    --bg: #07081c;
+    --card: #10124a;
+    --link: #ffd84a;
+    --code-bg: hsla(235, 60%, 25%, 0.7);
 }
 
 @layer base {
@@ -121,5 +136,365 @@
     .animate-blur-rise {
         animation: none;
         opacity: 1;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ANDREW QUEST
+   The site as a JRPG starring its author. Components live in
+   src/components/rpg/.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Neither pixel font has an ∞, and the fallback renders it tiny. This face
+   covers only U+221E: a system sans, scaled up to sit among the pixels. */
+@font-face {
+    font-family: "rpg-infinity";
+    src: local("Helvetica Neue"), local("Helvetica"), local("Arial"), local("DejaVu Sans"), local("Liberation Sans");
+    unicode-range: U+221E;
+    size-adjust: 175%;
+}
+
+/* ─── The theme: a starfield, faint scanlines, pixel headings ─── */
+.rpg body {
+    background-color: var(--bg);
+    background-image:
+        radial-gradient(1.5px 1.5px at 24px 36px, #ffffff 50%, transparent 51%),
+        radial-gradient(1px 1px at 132px 84px, #c8cbff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 212px 172px, #ffffff 50%, transparent 51%),
+        radial-gradient(1px 1px at 64px 206px, #ffe89a 50%, transparent 51%),
+        radial-gradient(1px 1px at 258px 18px, #ffffff 50%, transparent 51%),
+        radial-gradient(1px 1px at 172px 130px, #9fa6ff 50%, transparent 51%),
+        linear-gradient(#07081c, #0d1036 60%, #1a1147);
+    background-size: 280px 240px, 280px 240px, 280px 240px, 280px 240px, 280px 240px, 280px 240px, 100% 100%;
+    background-attachment: fixed;
+}
+
+.rpg body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.14) 0 1px, transparent 1px 3px);
+}
+
+/* Pixel type for page headings, never inside a post's body. */
+.rpg :is(h1, h2):not(.prose-tilde *) {
+    font-family: "rpg-infinity", var(--font-pixel), monospace;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.5;
+}
+
+.rpg article > header h1 {
+    font-size: 16px;
+}
+
+@media (min-width: 768px) {
+    .rpg article > header h1 {
+        font-size: 20px;
+    }
+}
+
+.rpg ::selection {
+    background: #ffd84a;
+    color: #07081c;
+}
+
+/* ─── Windows: the blue gradient box with the white border ─── */
+.rpg-window {
+    position: relative;
+    padding: 22px 16px 16px;
+    border: 3px solid #f4f4ff;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #2b3bab 0%, #16207a 50%, #0b1147 100%);
+    box-shadow:
+        0 0 0 3px #05061a,
+        inset 0 0 0 2px #0b1147,
+        0 8px 0 3px rgba(0, 0, 0, 0.35);
+    color: #f4f4ff;
+}
+
+.rpg-window-title {
+    position: absolute;
+    top: -11px;
+    left: 12px;
+    padding: 4px 8px;
+    border: 2px solid #f4f4ff;
+    border-radius: 3px;
+    background: #05061a;
+    color: #ffd84a;
+    font-family: var(--font-pixel), monospace;
+    font-size: 9px;
+    line-height: 1;
+    letter-spacing: 0.08em;
+}
+
+.rpg-inset {
+    padding: 10px 12px;
+    border: 2px solid rgba(244, 244, 255, 0.7);
+    border-radius: 4px;
+    background: rgba(5, 6, 26, 0.55);
+}
+
+/* ─── Meters: HP, MP, EXP ─── */
+.rpg-meter {
+    position: relative;
+    display: block;
+    height: 8px;
+    min-width: 48px;
+    overflow: hidden;
+    border: 2px solid #f4f4ff;
+    background: #05061a;
+}
+
+.rpg-meter-fill {
+    display: block;
+    height: 100%;
+}
+
+.rpg-meter-shine {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.45) 0 35%, transparent 35%) !important;
+    background-blend-mode: screen;
+}
+
+.rpg-hud {
+    width: 168px;
+    padding: 10px;
+    border: 2px solid #f4f4ff;
+    border-radius: 4px;
+    background: rgba(11, 17, 71, 0.9);
+    box-shadow: 0 0 0 2px #05061a;
+}
+
+/* On a phone the HUD shrinks to level + EXP and goes translucent, so it
+   covers as little of the page as a HUD can. */
+@media (max-width: 480px) {
+    .rpg-hud {
+        width: 124px;
+        padding: 7px 8px;
+        opacity: 0.85;
+    }
+
+    .rpg-hud-hp {
+        display: none;
+    }
+}
+
+/* ─── Battle ─── */
+.rpg-arena {
+    min-height: 210px;
+    background:
+        linear-gradient(to bottom, transparent 62%, #1f6b3a 62%, #164f2b 100%),
+        linear-gradient(#1a1f6b, #3a2f8f 55%, #6b4fb0 62%);
+    image-rendering: pixelated;
+}
+
+.rpg-command {
+    position: relative;
+    display: block;
+    padding: 6px 6px 6px 18px;
+    text-align: left;
+    font-family: var(--font-pixel), monospace;
+    font-size: 10px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.rpg-command:disabled {
+    color: #6b6f9e;
+    cursor: default;
+}
+
+.rpg-command:focus-visible {
+    outline: 2px solid #ffd84a;
+    outline-offset: 1px;
+}
+
+.rpg-cursor {
+    position: absolute;
+    left: 4px;
+    opacity: 0;
+    color: #ffd84a;
+}
+
+.rpg-command[data-active] .rpg-cursor {
+    opacity: 1;
+    animation: rpg-nudge 0.5s steps(2) infinite;
+}
+
+@keyframes rpg-nudge {
+    50% {
+        transform: translateX(2px);
+    }
+}
+
+.rpg-flash {
+    animation: rpg-flash 0.4s steps(2) 2;
+}
+
+@keyframes rpg-flash {
+    50% {
+        filter: brightness(3) saturate(0);
+    }
+}
+
+/* ─── Inventory ─── */
+.rpg-slot {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 4px 8px;
+    border: 2px solid rgba(244, 244, 255, 0.35);
+    border-radius: 4px;
+    background: rgba(5, 6, 26, 0.55);
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s;
+}
+
+.rpg-slot:hover,
+.rpg-slot:focus-visible,
+.rpg-slot[data-selected] {
+    border-color: var(--rarity);
+    box-shadow: 0 0 12px -2px var(--rarity);
+    outline: none;
+}
+
+.rpg-slot[data-selected] {
+    transform: translateY(-2px);
+}
+
+.rpg-item-card {
+    padding: 12px 14px;
+    border: 2px solid var(--rarity);
+    border-radius: 4px;
+    background: rgba(5, 6, 26, 0.75);
+    box-shadow: 0 0 18px -6px var(--rarity);
+}
+
+/* ─── Achievement toasts ─── */
+.rpg-toast {
+    display: flex;
+    width: min(380px, 100%);
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px 10px 10px;
+    border: 2px solid #f4f4ff;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #232a7a, #0b1147);
+    box-shadow: 0 0 0 2px #05061a, 0 10px 24px -8px rgba(0, 0, 0, 0.7);
+}
+
+.rpg-toast-medal {
+    display: grid;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border: 2px solid #ffd84a;
+    border-radius: 999px;
+    background: radial-gradient(circle at 35% 30%, #fff1a8, #e0a92a 60%, #8a5d0e);
+    color: #3a2604;
+    animation: rpg-medal 0.6s ease-out;
+}
+
+@keyframes rpg-medal {
+    from {
+        transform: rotate(-180deg) scale(0.3);
+    }
+}
+
+/* ─── Title screen ─── */
+.rpg-title {
+    background: radial-gradient(ellipse at 50% 60%, #1a1f6b 0%, #07081c 70%);
+}
+
+.rpg-title-stars {
+    position: absolute;
+    inset: -50%;
+    background-image:
+        radial-gradient(2px 2px at 40px 60px, #ffffff 50%, transparent 51%),
+        radial-gradient(1px 1px at 150px 120px, #c8cbff 50%, transparent 51%),
+        radial-gradient(2px 2px at 260px 30px, #ffe89a 50%, transparent 51%),
+        radial-gradient(1px 1px at 90px 220px, #ffffff 50%, transparent 51%);
+    background-size: 300px 260px;
+    animation: rpg-drift 60s linear infinite;
+}
+
+@keyframes rpg-drift {
+    to {
+        transform: translate(300px, 260px);
+    }
+}
+
+.rpg-logo {
+    color: #ffd84a;
+    text-shadow:
+        3px 3px 0 #c0392b,
+        6px 6px 0 #05061a;
+}
+
+.rpg-levelup {
+    color: #ffd84a;
+    text-shadow:
+        3px 3px 0 #c0392b,
+        -2px -2px 0 #ffffff,
+        6px 6px 0 #05061a;
+}
+
+.rpg-screen-flash {
+    position: absolute;
+    inset: 0;
+    background: #ffffff;
+    animation: rpg-screen-flash 0.65s steps(4) forwards;
+}
+
+@keyframes rpg-screen-flash {
+    0%, 50% { opacity: 0; }
+    25%, 75% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+/* ─── Shared motion ─── */
+.rpg-blink {
+    animation: rpg-blink 1s steps(1) infinite;
+}
+
+.rpg-blink-fast {
+    animation: rpg-blink 0.16s steps(1) infinite;
+}
+
+.rpg-blink-slow {
+    animation: rpg-blink 1.6s steps(1) infinite;
+}
+
+@keyframes rpg-blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.rpg-bob {
+    animation: rpg-bob 1s steps(2) infinite;
+}
+
+@keyframes rpg-bob {
+    50% {
+        transform: translateY(-3%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rpg-blink,
+    .rpg-blink-fast,
+    .rpg-blink-slow,
+    .rpg-bob,
+    .rpg-flash,
+    .rpg-title-stars,
+    .rpg-toast-medal,
+    .rpg-command[data-active] .rpg-cursor,
+    .rpg-screen-flash {
+        animation: none;
     }
 }
