@@ -8,8 +8,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dremnik.com"),
-  title: { default: "ANDREW JONES", template: "%s — ANDREW JONES" },
-  description: "I build and write at the intersection of capital, machines, and intelligence.",
+  title: { default: "ANDREW JONES, THE MAGNIFICENT", template: "%s — ANDREW JONES, THE MAGNIFICENT" },
+  description: "I build and write at the intersection of capital, machines, intelligence, and destiny.",
 };
 
 export default function RootLayout({

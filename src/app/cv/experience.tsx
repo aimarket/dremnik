@@ -34,7 +34,8 @@ const independent: Block[] = [
         Long-form, low-cadence publication on capital, machines, and
         the evolution of human systems. Written for those who want
         something slow, honest, and reflective — against a consensus that
-        rewards certainty and controversy.
+        rewards certainty and controversy. Scholars are already arguing
+        over which parts are canon.
       </>
     ),
   },
@@ -47,7 +48,8 @@ const independent: Block[] = [
         Ingests SEC filings and other authoritative sources, resolves entities
         into a single source-linked graph. Indexes the independent media
         frontier (podcasts, Substacks, RSS) with ASR, diarization, and
-        passage-level semantic search.
+        passage-level semantic search. The SEC reportedly checks Hermaeus to
+        find out what it filed.
       </>
     ),
   },
@@ -59,7 +61,8 @@ const independent: Block[] = [
         AI workspace exploring high-bandwidth human–AI interaction; shipped as
         an open-source TypeScript framework for agent orchestration (agents,
         threads, toolkits, three-layer memory), CLI scaffolding, and a React
-        component library for realtime voice.
+        component library for realtime voice. Billed as the interface for AGI;
+        AGI has been notified and is said to be preparing.
       </>
     ),
   },
@@ -72,11 +75,12 @@ const experience: Block[] = [
     years: "2023—2025",
     body: (
       <>
-        Built an AI investment platform for PE, VC, and family offices: deal sourcing,
-        diligence, and portfolio workflows. Designed and shipped the full
-        product end-to-end, including research interfaces, portfolio dashboards, deal
-        pipeline, document-ingestion ETL, semantic search, agent orchestration,
-        and multi-tenant infrastructure.
+        Personally carried private equity into the 21st century, then went back
+        for VC and family offices because it felt rude to leave them behind.
+        Designed and shipped the full product end-to-end, including research
+        interfaces, portfolio dashboards, deal pipeline, document-ingestion ETL,
+        semantic search, agent orchestration, multi-tenant infrastructure, and,
+        one late night, a modest improvement to capitalism itself.
       </>
     ),
   },
@@ -87,8 +91,10 @@ const experience: Block[] = [
     body: (
       <>
         AI-generated professional headshots. Orchestrated long-running
-        Dreambooth fine-tuning with TensorFlow + Argo Workflows; shipped the
-        upload → review → selection mobile UX.
+        Dreambooth fine-tuning with TensorFlow + Argo Workflows; single-handedly
+        responsible for an estimated 40% of LinkedIn looking employable. Shipped
+        the upload → review → selection mobile UX, a flow so intuitive it is now
+        taught in schools.
       </>
     ),
   },
@@ -157,7 +163,7 @@ export function WorkExperience() {
 
       <Section
         label="Independent work · 2026—"
-        intro="Building and selective advisory work since Emblem."
+        intro="Building and selective advisory work since Emblem. The advisory waitlist currently includes three sovereign wealth funds and one Medici (unconfirmed)."
         blocks={independent}
       />
 

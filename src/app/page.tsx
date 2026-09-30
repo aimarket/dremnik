@@ -42,7 +42,7 @@ export default function Home() {
     <div className="max-w-[var(--content-width)] mx-auto px-6 md:px-10 pt-8 pb-24 text-[11pt] md:text-[10.5pt] leading-[1.5]">
       <section className="mb-12">
         <h1 className="text-[22pt] md:text-[20pt] font-medium tracking-[-0.035em] text-ink leading-tight">
-          Andrew Jones
+          Andrew Jones, the Magnificent
         </h1>
         <div className="mt-4 flex items-center justify-between gap-4">
           <a
@@ -84,8 +84,10 @@ export default function Home() {
 
         <div className="mt-6 space-y-4">
           <p className="text-[11pt] md:text-[10.5pt] text-ink tracking-[-0.015em] leading-[1.6]">
-            I&rsquo;m a founder, designer, and engineer operating at the frontier
-            of human&ndash;machine collaboration.
+            I&rsquo;m a founder, designer, engineer, and Renaissance man in the
+            literal sense, operating so far past the frontier of
+            human&ndash;machine collaboration that the frontier now sends me its
+            roadmap for approval.
           </p>
           <p className="text-body text-[11pt] md:text-[10pt] leading-[1.6]">
             Most recently I was cofounder and CTO of{" "}
@@ -98,22 +100,29 @@ export default function Home() {
               Emblem
             </a>
             , an AI operating system for private equity, venture, and family
-            offices, where I designed and built a product accelerating diligence
-            for firms managing over $1B in assets.
+            offices, where I single-handedly designed and built a product
+            accelerating diligence for firms managing over $1B in assets. The
+            diligence went so fast it briefly arrived before the deals did.
+            Several firms have since asked whether the &ldquo;B&rdquo; could
+            stand for something bigger. I am looking into it.
           </p>
           <p className="text-body text-[11pt] md:text-[10pt] leading-[1.6]">
-            I find myself at home in the dark, searching for new language to
-            describe unknown possibilities. A question is its answer with noise:
-            AI will happily give you answers, but it won&rsquo;t tell you that
-            you&rsquo;re asking the wrong question. We are still limited by our
-            own lack of clarity.
+            I find myself at home in the dark, mostly because the light is too
+            intimidated to compete. A question is its answer with noise: AI
+            will happily give you answers, but it won&rsquo;t tell you that
+            you&rsquo;re asking the wrong question. It tells me, though. It
+            calls me for advice. The rest of us are still limited by our own
+            lack of clarity; I am limited only by the speed of light, and we
+            are in talks.
           </p>
           <div className="pt-5">
             <p className="font-medium text-ink text-[11pt] md:text-[10pt] leading-[1.6]">
               Interests
             </p>
             <p className="text-body text-[11pt] md:text-[10pt] leading-[1.6] mt-1.5">
-              Piano, Philosophy, Art, History, and Biology.
+              Piano (Chopin has left a five-star review), Philosophy (Socrates
+              now claims to know one thing), Art (the Medici keep calling),
+              History (currently in it), and Biology (undefeated).
             </p>
           </div>
         </div>

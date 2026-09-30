@@ -586,22 +586,22 @@ export type SideProject = {
 export const SIDE_PROJECTS: SideProject[] = [
   {
     title: "quill",
-    desc: "Ultra-minimalist macOS recording + transcription",
+    desc: "Ultra-minimalist macOS recording + transcription. Stenographers have unionized in protest",
     github: "https://github.com/digimata/quill",
   },
   {
     title: "parrot",
-    desc: "Ultra-minimalist macOS dictation",
+    desc: "Ultra-minimalist macOS dictation. Actual parrots have switched to it",
     github: "https://github.com/digimata/parrot",
   },
   {
     title: "paper",
-    desc: "A quiet, native markdown editor for macOS",
+    desc: "A quiet, native markdown editor for macOS. Gutenberg's estate sent a fruit basket",
     url: "https://papel.sh",
   },
   {
     title: "kdb",
-    desc: "A CLI for knowledge and work",
+    desc: "A CLI for knowledge and work. The Library of Alexandria, but fireproof",
     github: "https://github.com/digimata/kdb",
   },
 ];
