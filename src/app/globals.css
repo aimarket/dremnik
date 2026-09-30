@@ -267,13 +267,14 @@
     box-shadow: 0 0 0 2px #05061a;
 }
 
-/* On a phone the HUD shrinks to level + EXP and goes translucent, so it
-   covers as little of the page as a HUD can. */
+/* On a phone the HUD shrinks to level + EXP so it covers as little of the
+   page as a HUD can. It stays opaque: body text bleeding through a
+   translucent box reads worse than a small solid one. */
 @media (max-width: 480px) {
     .rpg-hud {
         width: 124px;
         padding: 7px 8px;
-        opacity: 0.85;
+        background: #0b1147;
     }
 
     .rpg-hud-hp {
