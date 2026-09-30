@@ -1,5 +1,19 @@
 import localFont from "next/font/local";
-import { Inter, Geist, Geist_Mono } from "next/font/google";
+import { Inter, Geist, Geist_Mono, Cinzel, Cinzel_Decorative } from "next/font/google";
+
+// Roman capitals, as carved on the Pantheon. For the Magnificent theme.
+export const cinzel = Cinzel({
+  subsets: ["latin"],
+  variable: "--font-cinzel",
+  display: "swap",
+});
+
+export const cinzelDecorative = Cinzel_Decorative({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-cinzel-decorative",
+  display: "swap",
+});
 
 export const geist = Geist({
   subsets: ["latin"],

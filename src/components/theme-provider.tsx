@@ -18,7 +18,8 @@ export function ThemeProvider({
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="system"
+      themes={["light", "dark", "magnificent"]}
+      defaultTheme="magnificent"
       enableSystem
       disableTransitionOnChange
     >

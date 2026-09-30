@@ -4,6 +4,7 @@ import { formatBlogDate } from "@/lib/blog-date";
 
 import { BackLink } from "@/components/back-link";
 import { Markdown } from "@/components/markdown";
+import { WaxSeal } from "@/components/magnificent";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -54,6 +55,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="prose-tilde">
           <Markdown content={post.content} />
         </div>
+        <WaxSeal />
       </article>
     </div>
     </>

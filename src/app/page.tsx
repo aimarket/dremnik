@@ -3,6 +3,12 @@ import { allPosts } from "content-collections";
 import { IconGithub, IconLinkedIn, IconTwitterX } from "@/components/ui/icons";
 import { Header } from "@/components/header";
 import { SIDE_PROJECTS } from "@/lib/projects";
+import {
+  HallOfAchievements,
+  MagnificentName,
+  Portrait,
+  Testimonials,
+} from "@/components/magnificent";
 
 // -------------------------------------
 // projects/dremnik/src/app/page.tsx
@@ -41,9 +47,7 @@ export default function Home() {
     <Header />
     <div className="max-w-[var(--content-width)] mx-auto px-6 md:px-10 pt-8 pb-24 text-[11pt] md:text-[10.5pt] leading-[1.5]">
       <section className="mb-12">
-        <h1 className="text-[22pt] md:text-[20pt] font-medium tracking-[-0.035em] text-ink leading-tight">
-          Andrew Jones, the Magnificent
-        </h1>
+        <MagnificentName />
         <div className="mt-4 flex items-center justify-between gap-4">
           <a
             href="mailto:andrew@dremnik.com"
@@ -83,6 +87,7 @@ export default function Home() {
         </div>
 
         <div className="mt-6 space-y-4">
+          <Portrait />
           <p className="text-[11pt] md:text-[10.5pt] text-ink tracking-[-0.015em] leading-[1.6]">
             I&rsquo;m a founder, designer, engineer, and Renaissance man in the
             literal sense, operating so far past the frontier of
@@ -127,6 +132,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <HallOfAchievements />
+
+      <Testimonials />
 
       <section className="mt-12">
         <h2 className="font-mono text-[9.5pt] md:text-[8.5pt] uppercase tracking-[0.08em] text-muted mb-3 pb-1.5 border-b border-rule">
@@ -196,6 +205,10 @@ export default function Home() {
         </section>
       )}
 
+      <footer className="mt-16 pt-4 border-t border-rule text-center font-mono text-[8.5pt] md:text-[8pt] text-muted leading-[1.8]">
+        <p>Est. 1487 &middot; Patron of the arts: himself &middot; All rights reserved, most wrongs righted</p>
+        <p className="opacity-60">&uarr; &uarr; &darr; &darr; &larr; &rarr; &larr; &rarr; B A &middot; or just type &ldquo;medici&rdquo;</p>
+      </footer>
     </div>
     </>
   );

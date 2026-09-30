@@ -27,6 +27,9 @@
     --font-financier-display: var(--font-financier-display);
     --font-spezia: var(--font-spezia);
     --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    --font-cinzel: var(--font-cinzel);
+    --font-cinzel-decorative: var(--font-cinzel-decorative);
+    --color-gold: var(--gold);
 
     --content-width: 696px;
 }
@@ -41,6 +44,7 @@
     --card: #101011;
     --link: #053961aa;
     --code-bg: hsla(240, 6%, 90%, 0.5);
+    --gold: #b8860b;
 }
 
 .dark {
@@ -53,6 +57,21 @@
     --card: #171719;
     --link: #B5D6FB;       /* apocrypha steel-500 */
     --code-bg: hsla(220, 8%, 18%, 0.7);
+    --gold: #e0b84f;
+}
+
+/* The default theme, as is only proper: parchment, gold leaf, cardinal red. */
+.magnificent {
+    --ink: #2b1d0e;
+    --body: #3b2a16;
+    --soft: #5e4424;
+    --muted: #86683c;
+    --rule: #d8bf85;
+    --bg: #f3e6c8;
+    --card: #2b1d0e;
+    --link: #8a1c1c;
+    --code-bg: hsla(40, 55%, 78%, 0.55);
+    --gold: #b8860b;
 }
 
 @layer base {
@@ -121,5 +140,358 @@
     .animate-blur-rise {
         animation: none;
         opacity: 1;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MAGNIFICENCE
+   Everything below serves one man. Components live in
+   src/components/magnificent/.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── The Magnificent theme: parchment, vignette, illuminated letters ─── */
+.magnificent body {
+    background-color: var(--bg);
+    background-image:
+        radial-gradient(ellipse at 50% 40%, transparent 50%, rgba(110, 70, 15, 0.22) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .3 0 0 0 0 .1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    font-family: var(--font-tiempos), Georgia, serif;
+}
+
+.magnificent h1 {
+    font-family: var(--font-cinzel-decorative), serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    /* Cinzel Decorative's default TH ligature reads as a typo at this size. */
+    font-variant-ligatures: none;
+}
+
+.magnificent h2 {
+    font-family: var(--font-cinzel), serif;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--link);
+}
+
+.magnificent ::selection {
+    background: #f2c94c;
+    color: #2b1d0e;
+}
+
+html.magnificent {
+    scrollbar-color: #c9a23f transparent;
+}
+
+.magnificent ::-webkit-scrollbar-thumb {
+    background: linear-gradient(#f2c94c, #9a6b12);
+    background-clip: padding-box;
+}
+
+/* Illuminated manuscript initial on the first paragraph of every post. */
+.magnificent .prose-tilde > p:first-of-type::first-letter,
+.magnificent .prose-tilde > div > p:first-of-type::first-letter {
+    float: left;
+    font-family: var(--font-cinzel-decorative), serif;
+    font-weight: 700;
+    font-size: 3.6em;
+    line-height: 0.8;
+    padding: 0.12em 0.14em 0.04em;
+    margin: 0.08em 0.16em 0 0;
+    color: #8a1c1c;
+    background: linear-gradient(135deg, #fff4c2, #f2c94c 40%, #b8860b);
+    border: 2px solid #7a5410;
+}
+
+/* ─── Gold leaf text ─── */
+.mag-gold-text {
+    /* The highlight stops at pale gold, not cream, so letters never vanish on parchment. */
+    background: linear-gradient(100deg, #7a5410 0%, #b8860b 20%, #e6c35c 35%, #b8860b 50%, #7a5410 70%, #b8860b 100%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 1px 0 rgba(90, 60, 10, 0.25));
+    animation: mag-shimmer 5s linear infinite;
+}
+
+@keyframes mag-shimmer {
+    to {
+        background-position: -250% 0;
+    }
+}
+
+/* ─── Halo ─── */
+.mag-halo {
+    position: absolute;
+    left: 0.4em;
+    top: -0.5em;
+    width: 2.4em;
+    height: 0.62em;
+    border-radius: 50%;
+    border: 0.1em solid #f2c94c;
+    box-shadow:
+        0 0 12px 3px rgba(242, 201, 76, 0.6),
+        inset 0 0 8px 2px rgba(255, 244, 194, 0.55);
+    pointer-events: none;
+    animation: mag-halo-bob 3.2s ease-in-out infinite;
+}
+
+.mag-halo-portrait {
+    font-size: 14px;
+    left: 31%;
+    top: 1%;
+    width: 38%;
+    height: 9%;
+}
+
+@keyframes mag-halo-bob {
+    0%, 100% { transform: translateY(0) rotate(-4deg); }
+    50% { transform: translateY(-4px) rotate(3deg); }
+}
+
+/* ─── Gilded frame, placard, speech bubble ─── */
+.mag-frame {
+    padding: 10px;
+    border-radius: 2px;
+    background: linear-gradient(135deg, #7a5410, #f2c94c 22%, #9a6b12 42%, #fff4c2 58%, #b8860b 78%, #7a5410);
+    box-shadow:
+        inset 0 1px 0 #fff4c2,
+        0 0 0 1px #5c3d08,
+        0 14px 30px -10px rgba(60, 35, 0, 0.6);
+    transform-style: preserve-3d;
+}
+
+.mag-frame img {
+    outline: 2px solid #5c3d08;
+}
+
+.mag-placard {
+    margin-top: 14px;
+    padding: 6px 8px;
+    border: 1px solid #8a6d1d;
+    background: linear-gradient(#efe0b0, #cdb574);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    color: #3a2a17;
+    font-family: var(--font-tiempos), Georgia, serif;
+    font-size: 7.5pt;
+    line-height: 1.35;
+    text-align: center;
+}
+
+.mag-speech {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 12px);
+    z-index: 10;
+    width: max-content;
+    max-width: 210px;
+    padding: 6px 10px;
+    border: 1.5px solid #7a5410;
+    border-radius: 12px;
+    background: #fffaf0;
+    color: #2b1d0e;
+    font-family: var(--font-tiempos), Georgia, serif;
+    font-size: 10pt;
+    font-style: italic;
+    line-height: 1.3;
+    box-shadow: 0 6px 16px -6px rgba(60, 35, 0, 0.45);
+}
+
+.mag-speech::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    border: 7px solid transparent;
+    border-top-color: #7a5410;
+    transform: translateX(-50%);
+}
+
+/* ─── Achievement tiles ─── */
+.mag-tile {
+    padding: 12px;
+    border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+    border-radius: 6px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--gold) 10%, transparent), transparent 70%);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mag-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -12px color-mix(in srgb, var(--gold) 90%, transparent);
+}
+
+/* ─── Ticker ─── */
+.mag-marquee {
+    animation: mag-marquee 70s linear infinite;
+}
+
+@keyframes mag-marquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* ─── Herald: curtains, valance, the overflowing bar, the Enter button ─── */
+.mag-curtain {
+    position: absolute;
+    top: 0;
+    width: 50.5%;
+    height: 100%;
+    background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.35), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.5)),
+        linear-gradient(to right, transparent 70%, rgba(0, 0, 0, 0.45)),
+        repeating-linear-gradient(90deg, #4a0909 0, #7d1414 22px, #a52020 34px, #7d1414 46px, #4a0909 68px);
+    box-shadow: inset 0 -16px 0 -8px #c9a23f;
+}
+
+.mag-valance {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 46px;
+    background:
+        radial-gradient(circle at 50% 0, transparent 22px, #c9a23f 23px, #9a6b12 26px, transparent 27px) 0 18px / 60px 30px repeat-x,
+        linear-gradient(#5a0b0b, #8b1a1a);
+    border-bottom: 2px solid #c9a23f;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+.mag-overflow {
+    position: absolute;
+    inset: -6px -40px -6px auto;
+    width: 60%;
+    border-radius: 999px;
+    background: radial-gradient(ellipse at left, #fff4c2, #f2c94c 35%, transparent 70%);
+    filter: blur(4px);
+    animation: mag-pulse 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes mag-pulse {
+    to {
+        opacity: 0.5;
+        transform: scaleX(1.25);
+    }
+}
+
+.mag-shake {
+    display: inline-block;
+    animation: mag-shake 0.12s linear infinite;
+}
+
+@keyframes mag-shake {
+    0% { transform: translate(0, 0) rotate(0); }
+    25% { transform: translate(1px, -1px) rotate(-2deg); }
+    50% { transform: translate(-1px, 1px) rotate(2deg); }
+    75% { transform: translate(1px, 1px) rotate(-1deg); }
+}
+
+.mag-enter {
+    padding: 10px 26px;
+    border: 1.5px solid #f2c94c;
+    border-radius: 999px;
+    background: linear-gradient(#f2c94c, #9a6b12);
+    color: #2b1d0e;
+    font-size: 11pt;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 0 4px rgba(242, 201, 76, 0.2), 0 0 30px rgba(242, 201, 76, 0.55);
+    animation: mag-glow 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes mag-glow {
+    to {
+        box-shadow: 0 0 0 8px rgba(242, 201, 76, 0.12), 0 0 50px rgba(242, 201, 76, 0.85);
+    }
+}
+
+/* ─── Cherub + banner ─── */
+.mag-flap {
+    display: inline-block;
+    animation: mag-flap 0.35s ease-in-out infinite alternate;
+}
+
+@keyframes mag-flap {
+    from { transform: translateY(0) rotate(-7deg); }
+    to { transform: translateY(-4px) rotate(7deg); }
+}
+
+.mag-banner {
+    padding: 5px 20px;
+    border-block: 2px solid #c9a23f;
+    background: linear-gradient(#fffaf0, #f1e2b8);
+    color: #8a1c1c;
+    font-family: var(--font-cinzel), serif;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 50%, 100% 100%, 0 100%, 10px 50%);
+}
+
+/* ─── Cursor sparkles ─── */
+.mag-sparkle {
+    position: fixed;
+    z-index: 95;
+    pointer-events: none;
+    color: #e0b84f;
+    text-shadow: 0 0 6px rgba(242, 201, 76, 0.9);
+    transform: translate(-50%, -50%);
+    animation: mag-sparkle 0.9s ease-out forwards;
+}
+
+@keyframes mag-sparkle {
+    to {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--dx)), calc(-50% + 28px)) scale(0.3) rotate(160deg);
+    }
+}
+
+/* ─── The Ascension ─── */
+.mag-rays {
+    position: absolute;
+    left: 50%;
+    top: -60vmax;
+    width: 200vmax;
+    height: 200vmax;
+    margin-left: -100vmax;
+    background:
+        radial-gradient(circle, rgba(255, 248, 220, 0.9) 0, rgba(255, 244, 194, 0.45) 18%, transparent 55%),
+        repeating-conic-gradient(from 0deg, rgba(255, 244, 194, 0.35) 0 6deg, transparent 6deg 14deg);
+    animation: mag-rays 40s linear infinite;
+}
+
+@keyframes mag-rays {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+html.mag-ascend main {
+    transform: translateY(-18px);
+    filter: drop-shadow(0 0 22px rgba(242, 201, 76, 0.85));
+    transition: transform 2s ease, filter 2s ease;
+}
+
+main {
+    transition: transform 1.5s ease, filter 1.5s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mag-gold-text,
+    .mag-halo,
+    .mag-marquee,
+    .mag-overflow,
+    .mag-shake,
+    .mag-enter,
+    .mag-flap,
+    .mag-rays {
+        animation: none;
+    }
+
+    html.mag-ascend main {
+        transform: none;
     }
 }

@@ -587,12 +587,12 @@ export const SIDE_PROJECTS: SideProject[] = [
   {
     title: "quill",
     desc: "Ultra-minimalist macOS recording + transcription. Stenographers have unionized in protest",
-    github: "https://github.com/digimata/quill",
+    github: "https://github.com/humanitas-labs/quill",
   },
   {
     title: "parrot",
     desc: "Ultra-minimalist macOS dictation. Actual parrots have switched to it",
-    github: "https://github.com/digimata/parrot",
+    github: "https://github.com/humanitas-labs/parrot",
   },
   {
     title: "paper",
@@ -602,6 +602,6 @@ export const SIDE_PROJECTS: SideProject[] = [
   {
     title: "kdb",
     desc: "A CLI for knowledge and work. The Library of Alexandria, but fireproof",
-    github: "https://github.com/digimata/kdb",
+    github: "https://github.com/humanitas-labs/kdb",
   },
 ];

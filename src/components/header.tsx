@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Crown } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Header() {
@@ -8,8 +9,12 @@ export function Header() {
         <nav className="flex items-center justify-between">
           <Link
             href="/"
-            className="font-mono text-[9pt] tracking-[0.02em] text-link hover:text-link/80 transition-colors duration-200"
+            className="group inline-flex items-center gap-1.5 font-mono text-[9pt] tracking-[0.02em] text-link hover:text-link/80 transition-colors duration-200"
           >
+            <Crown
+              aria-hidden="true"
+              className="mag-flap size-[12px] text-[var(--gold)] [animation-duration:1.8s]"
+            />
             dremnik
           </Link>
           <div className="flex items-center gap-5 text-[10pt]">
