@@ -18,8 +18,10 @@ export function ThemeProvider({
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="system"
-      enableSystem
+      // Dark mode hasn't been invented yet. It's 1998.
+      forcedTheme="light"
+      defaultTheme="light"
+      enableSystem={false}
       disableTransitionOnChange
     >
       {children}

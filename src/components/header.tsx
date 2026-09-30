@@ -1,34 +1,32 @@
 import Link from "next/link";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { PopupButton, type Popup } from "@/components/geocities";
+
+// A row of beveled buttons, the way navigation was meant to be.
+
+const DARK_MODE: Popup = {
+  title: "Dark Mode",
+  icon: "info",
+  text: "Dark mode has not been invented yet. Andrew has been notified and will get to it in 2019.",
+  buttons: [{ label: "OK" }, { label: "Remind me in 2019" }],
+};
 
 export function Header() {
   return (
     <header className="w-full">
-      <div className="max-w-[var(--content-width)] mx-auto px-6 md:px-10 pt-8 pb-2">
-        <nav className="flex items-center justify-between">
-          <Link
-            href="/"
-            className="font-mono text-[9pt] tracking-[0.02em] text-link hover:text-link/80 transition-colors duration-200"
-          >
-            dremnik
+      <div className="mx-auto max-w-[820px] px-3 pt-4">
+        <nav className="geo-navbar" aria-label="Main">
+          <Link href="/" className="geo-btn">
+            ⌂ dremnik
           </Link>
-          <div className="flex items-center gap-5 text-[10pt]">
-            <Link
-              href="/blog"
-              className="text-muted hover:text-ink transition-colors duration-200"
-            >
-              Blog
-            </Link>
-            {/* Work hidden for now — site is focused on the blog.
-            <Link
-              href="/work"
-              className="text-muted hover:text-ink transition-colors duration-200"
-            >
-              Work
-            </Link>
-            */}
-            <ThemeToggle />
-          </div>
+          <Link href="/blog" className="geo-btn">
+            ✎ Web Log
+          </Link>
+          <Link href="/#guestbook" className="geo-btn">
+            ✉ Guestbook
+          </Link>
+          <PopupButton className="geo-btn" popup={DARK_MODE}>
+            ☾ Dark Mode
+          </PopupButton>
         </nav>
       </div>
     </header>

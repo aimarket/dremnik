@@ -1,5 +1,20 @@
 import localFont from "next/font/local";
-import { Inter, Geist, Geist_Mono } from "next/font/google";
+import { Inter, Geist, Geist_Mono, Comic_Neue, Anton } from "next/font/google";
+
+// The 1998 look, for machines without Comic Sans or Impact installed.
+export const comicNeue = Comic_Neue({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-comic-neue",
+  display: "swap",
+});
+
+export const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-anton",
+  display: "swap",
+});
 
 export const geist = Geist({
   subsets: ["latin"],
