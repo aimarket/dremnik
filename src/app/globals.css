@@ -27,6 +27,7 @@
     --font-financier-display: var(--font-financier-display);
     --font-spezia: var(--font-spezia);
     --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    --font-plex: var(--font-plex);
 
     --content-width: 696px;
 }
@@ -121,5 +122,194 @@
     .animate-blur-rise {
         animation: none;
         opacity: 1;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   $DREM TERMINAL
+   Black, amber, and green, as markets intended. Components live in
+   src/components/terminal/.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.drem-terminal {
+    font-variant-numeric: tabular-nums;
+}
+
+.drem-terminal ::selection {
+    background: #ffb000;
+    color: #000;
+}
+
+/* A faint CRT: scanlines and a vignette, above everything, touching nothing. */
+.drem-scanlines {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px),
+        radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.drem-panel {
+    border: 1px solid #4a3c14;
+    background: #050505;
+}
+
+.drem-panel-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2px 8px;
+    background: #ffb000;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.drem-code {
+    padding: 0 4px;
+    background: #000;
+    color: #ffb000;
+}
+
+.drem-button {
+    padding: 6px 14px;
+    border: 1px solid #ffb000;
+    background: #1a1300;
+    color: #ffb000;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.drem-button:hover,
+.drem-button:focus-visible {
+    background: #ffb000;
+    color: #000;
+    outline: none;
+}
+
+.drem-fkey {
+    padding: 2px 8px;
+    border: 1px solid #4a3c14;
+    background: #0b0b0b;
+    color: #e8e8e8;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.drem-fkey:hover,
+.drem-fkey:focus-visible {
+    border-color: #ffb000;
+    color: #ffb000;
+    outline: none;
+}
+
+.drem-price {
+    font-size: 30pt;
+    font-weight: 700;
+    line-height: 1.05;
+    color: #33d17a;
+    letter-spacing: -0.02em;
+}
+
+.drem-flash-up {
+    animation: drem-flash-up 0.45s ease-out;
+}
+
+.drem-flash-flat {
+    animation: drem-flash-flat 0.45s ease-out;
+}
+
+@keyframes drem-flash-up {
+    from { background: rgba(51, 209, 122, 0.45); }
+    to { background: transparent; }
+}
+
+@keyframes drem-flash-flat {
+    from { background: rgba(255, 176, 0, 0.35); }
+    to { background: transparent; }
+}
+
+.drem-blink {
+    animation: drem-blink 0.9s steps(2, jump-none) infinite;
+}
+
+@keyframes drem-blink {
+    50% { opacity: 0.25; }
+}
+
+.drem-slide-in {
+    animation: drem-slide-in 0.35s ease-out;
+}
+
+@keyframes drem-slide-in {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: none; }
+}
+
+.drem-hazard {
+    background: repeating-linear-gradient(-45deg, #ffb000 0 14px, #1a1300 14px 28px);
+    box-shadow: inset 0 0 0 4px #ffb000;
+}
+
+.drem-hazard p {
+    width: fit-content;
+    margin-inline: auto;
+    background: #ffb000;
+    padding: 0 6px;
+}
+
+.drem-bell-button {
+    animation: drem-bell-glow 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes drem-bell-glow {
+    from { box-shadow: 0 0 0 0 rgba(255, 176, 0, 0.2); }
+    to { box-shadow: 0 0 0 6px rgba(255, 176, 0, 0.12), 0 0 28px rgba(255, 176, 0, 0.55); }
+}
+
+/* Ticker-tape parade after the bell. */
+.drem-strip {
+    position: absolute;
+    top: -30px;
+    width: 7px;
+    height: 22px;
+    opacity: 0.9;
+    animation-name: drem-fall;
+    animation-timing-function: cubic-bezier(0.3, 0.1, 0.7, 1);
+    animation-fill-mode: forwards;
+}
+
+@keyframes drem-fall {
+    to {
+        transform: translateY(110vh) rotate(var(--spin));
+        opacity: 0.6;
+    }
+}
+
+.drem-rocket {
+    animation: drem-rocket 1.6s ease-in infinite;
+}
+
+@keyframes drem-rocket {
+    from { transform: translate(-40vw, 45vh) rotate(0deg); }
+    to { transform: translate(45vw, -55vh) rotate(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .drem-flash-up,
+    .drem-flash-flat,
+    .drem-blink,
+    .drem-slide-in,
+    .drem-bell-button,
+    .drem-rocket {
+        animation: none;
+    }
+
+    .drem-strip {
+        display: none;
     }
 }

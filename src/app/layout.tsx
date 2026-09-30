@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { geist, geistMono, tiemposText, financierDisplay, edictDisplay, spezia } from "@/lib/fonts";
+import { geist, geistMono, tiemposText, financierDisplay, edictDisplay, spezia, plexMono } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/theme-provider";
 import { NavTracker } from "@/components/back-link";
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geist.variable} ${geistMono.variable} ${tiemposText.variable} ${financierDisplay.variable} ${edictDisplay.variable} ${spezia.variable} font-sans antialiased`}
+        className={`${geist.variable} ${geistMono.variable} ${tiemposText.variable} ${financierDisplay.variable} ${edictDisplay.variable} ${spezia.variable} ${plexMono.variable} font-sans antialiased`}
       >
         <ThemeProvider>
           <NavTracker />

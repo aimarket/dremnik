@@ -4,6 +4,7 @@ import { formatBlogDate } from "@/lib/blog-date";
 
 import { BackLink } from "@/components/back-link";
 import { Markdown } from "@/components/markdown";
+import { ResearchBanner, ResearchDisclosure } from "@/components/terminal/research-banner";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -20,6 +21,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+    <ResearchBanner note={`NOTE ${String(allPosts.indexOf(post) + 1).padStart(3, "0")}`} />
     <div className="max-w-[var(--content-width)] mx-auto px-6 md:px-10 pt-8 pb-24">
       <div className="mb-12">
         <BackLink
@@ -54,6 +56,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="prose-tilde">
           <Markdown content={post.content} />
         </div>
+        <ResearchDisclosure />
       </article>
     </div>
     </>

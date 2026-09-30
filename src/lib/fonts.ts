@@ -1,5 +1,13 @@
 import localFont from "next/font/local";
-import { Inter, Geist, Geist_Mono } from "next/font/google";
+import { Inter, Geist, Geist_Mono, IBM_Plex_Mono } from "next/font/google";
+
+// The trading floor's typeface. For the $DREM terminal.
+export const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-plex",
+  display: "swap",
+});
 
 export const geist = Geist({
   subsets: ["latin"],
